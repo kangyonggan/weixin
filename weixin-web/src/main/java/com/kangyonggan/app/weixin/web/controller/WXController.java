@@ -62,7 +62,7 @@ public class WXController {
             }
         }
 
-        return "你说的是：" + sb;
+        return "success";
     }
 
 }
