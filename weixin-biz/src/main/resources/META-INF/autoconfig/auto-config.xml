@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <group>
+        <!--app-->
+        <property name="weixin.app.name" description="项目名字" defaultValue="订阅号"/>
+        <property name="weixin.app.author" description="项目负责人" defaultValue="康永敢"/>
+        <property name="weixin.app.name.en" description="项目名字" defaultValue="weixin"/>
+        <property name="weixin.app.author.en" description="项目负责人" defaultValue="kangyonggan"/>
+        <property name="weixin.app.ba.no" description="备案号" defaultValue="皖ICP备16017743号-1"/>
+
+        <!-- redis -->
+        <property name="weixin.redis.maxTotal" description="redis最大连接数" defaultValue="1000"/>
+        <property name="weixin.redis.minIdle" description="redis最小等待数" defaultValue="50"/>
+        <property name="weixin.redis.maxIdle" description="redis最大等待数" defaultValue="100"/>
+        <property name="weixin.redis.testOnBorrow" description="redis测试支持" defaultValue="true"/>
+        <property name="weixin.redis.host" description="redis主机ip" defaultValue="127.0.0.1"/>
+        <property name="weixin.redis.port" description="redis主机端口" defaultValue="6379"/>
+        <property name="weixin.redis.password" description="redis密码" defaultValue="123456"/>
+        <property name="weixin.redis.prefix" description="redis的key的前缀" defaultValue="weixin"/>
+
+        <!--jdbc-->
+        <property name="weixin.jdbc.driver" description="jdbc驱动" defaultValue="com.mysql.jdbc.Driver"/>
+        <property name="weixin.jdbc.url" description="jdbc地址" defaultValue="jdbc:mysql://127.0.0.1:3306/weixin"/>
+        <property name="weixin.jdbc.username" description="jdbc用户名" defaultValue="root"/>
+        <property name="weixin.jdbc.password" description="jdbc密码" defaultValue="123456"/>
+
+        <!-- log4j2 -->
+        <property name="weixin.log4j2.home" description="log4j2日志的文件主目录" defaultValue="/Users/kyg/logs/weixin"/>
+
+        <property name="weixin.slow.method.time" description="慢方法时间(秒)" defaultValue="2"/>
+        <property name="weixin.cache.open" description="是否开启缓存,Y:开启,N:不开启" defaultValue="Y"/>
+    </group>
+    <script>
+        <generate template="app.properties" charset="UTF-8"/>
+        <generate template="messages_en_US.properties" charset="UTF-8"/>
+        <generate template="messages_zh_CN.properties" charset="UTF-8"/>
+        <generate template="applicationContext-datasource.xml" charset="UTF-8"/>
+        <generate template="applicationContext-redis.xml" charset="UTF-8"/>
+        <generate template="log4j2.xml"/>
+    </script>
+</config>

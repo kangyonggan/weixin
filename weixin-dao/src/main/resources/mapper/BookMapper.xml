@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kangyonggan.app.weixin.mapper.BookMapper">
+    <resultMap id="BaseResultMap" type="com.kangyonggan.app.weixin.model.vo.Book">
+        <!--
+          WARNING - @mbggenerated
+        -->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="author" jdbcType="VARCHAR" property="author"/>
+        <result column="intro" jdbcType="VARCHAR" property="intro"/>
+        <result column="picture" jdbcType="VARCHAR" property="picture"/>
+        <result column="url" jdbcType="INTEGER" property="url"/>
+        <result column="new_chapter_url" jdbcType="INTEGER" property="newChapterUrl"/>
+        <result column="new_chapter_title" jdbcType="VARCHAR" property="newChapterTitle"/>
+        <result column="type" jdbcType="VARCHAR" property="type"/>
+        <result column="is_finished" jdbcType="TINYINT" property="isFinished"/>
+        <result column="is_deleted" jdbcType="TINYINT" property="isDeleted"/>
+        <result column="created_time" jdbcType="TIMESTAMP" property="createdTime"/>
+        <result column="updated_time" jdbcType="TIMESTAMP" property="updatedTime"/>
+    </resultMap>
+</mapper>
