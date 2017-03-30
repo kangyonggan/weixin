@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -21,19 +22,48 @@ public class WXController {
      *
      * @return
      */
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.POST)
     public String handle(HttpServletRequest request) {
-        String signature = request.getParameter("signature");
-        String timestamp = request.getParameter("timestamp");
-        String nonce = request.getParameter("nonce");
-        String echostr = request.getParameter("echostr");
+        log.info("========= 微信订阅号后台收到一个请求 =========");
+        log.info("request:" + request);
+//        String signature = request.getParameter("signature");
+//        String timestamp = request.getParameter("timestamp");
+//        String nonce = request.getParameter("nonce");
+//        String echostr = request.getParameter("echostr");
+//
+//        log.info("signature:" + signature);
+//        log.info("timestamp:" + timestamp);
+//        log.info("nonce:" + nonce);
+//        log.info("echostr:" + echostr);
 
-        log.info("signature:" + signature);
-        log.info("timestamp:" + timestamp);
-        log.info("nonce:" + nonce);
-        log.info("echostr:" + echostr);
+        ServletInputStream inputStream = null;
+        try {
+            inputStream = request.getInputStream();
 
-        return echostr;
+            byte b[] = new byte[1024];
+            int len;
+            StringBuilder sb = new StringBuilder();
+
+            while ((len = inputStream.read(b)) != -1) {
+                sb.append(new String(b, 0, len));
+            }
+
+            log.info("接收到的消息：{}", sb);
+
+        } catch (Exception e) {
+            log.error("接收消息异常", e);
+        } finally {
+            if (inputStream != null) {
+                try {
+                    inputStream.close();
+                } catch (Exception e) {
+                    log.error("关闭流异常", e);
+                }
+            }
+        }
+
+
+        return "success";
     }
 
 }
