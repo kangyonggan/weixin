@@ -37,12 +37,12 @@ public class WXController {
 //        log.info("echostr:" + echostr);
 
         ServletInputStream inputStream = null;
+        StringBuilder sb = new StringBuilder();
         try {
             inputStream = request.getInputStream();
 
             byte b[] = new byte[1024];
             int len;
-            StringBuilder sb = new StringBuilder();
 
             while ((len = inputStream.read(b)) != -1) {
                 sb.append(new String(b, 0, len));
@@ -62,8 +62,7 @@ public class WXController {
             }
         }
 
-
-        return "success";
+        return "你说的是：" + sb;
     }
 
 }
