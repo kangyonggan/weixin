@@ -92,11 +92,11 @@ public class WXController {
         log.info("签名加密后的respXml：{}", respXml);
 
         // 8. 写响应
-        try {
-            IOUtil.write(response.getOutputStream(), respXml);
-        } catch (IOException e) {
-            log.error("写响应失败", e);
-        }
+//        try {
+//            IOUtil.write(response.getOutputStream(), respXml);
+//        } catch (IOException e) {
+//            log.error("写响应失败", e);
+//        }
 
         return "success";
     }
