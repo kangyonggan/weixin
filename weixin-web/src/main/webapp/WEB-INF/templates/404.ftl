@@ -1,5 +1,5 @@
 <div style="color: red; text-align: center; font-size: 25px">
-    博客已迁移
+    博客已迁移至：
 </div>
 
 <div style="height: 30px"></div>
